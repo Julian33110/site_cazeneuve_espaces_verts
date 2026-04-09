@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prestations de Cazelag : élagage, débardage forestier et travaux forestiers à Dax et alentours (Landes 40). Grimpeur arboriste professionnel.">
+  <meta name="robots" content="index, follow">
+  <title>Prestations | Cazelag — Élagueur à Dax, Landes (40)</title>
+  <link rel="canonical" href="https://www.cazelag.fr/prestations.html">
+  <meta property="og:title" content="Prestations | Cazelag — Élagueur à Dax">
+  <meta property="og:description" content="Élagage, débardage forestier et travaux forestiers à Dax et alentours.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.cazelag.fr/prestations.html">
+  <link rel="icon" type="image/x-icon" href="/images/icons/favicon.ico">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css?v=3">
+  <style>
+    .page-hero {
+      padding: 10rem 0 4rem;
+      background: linear-gradient(to bottom, rgba(5,12,24,.85), var(--color-bg-alt)),
+                  url('images/prestations/banner.jpg') center/cover no-repeat;
+      text-align: center;
+    }
+    .page-hero__label {
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: .75rem;
+    }
+    .page-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+    }
+    .page-hero p {
+      color: var(--color-text-muted);
+      margin-top: .75rem;
+      font-size: 1.1rem;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .85rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+    }
+    .breadcrumb a { color: var(--color-accent); }
+    .breadcrumb span { color: var(--color-text-muted); }
+
+    /* Prestation blocks */
+    .prestation {
+      padding-block: var(--section-py);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .prestation:last-of-type { border-bottom: none; }
+    .prestation:nth-child(even) { background: var(--color-bg-alt); }
+
+    .prestation__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .prestation:nth-child(even) .prestation__grid {
+      direction: rtl;
+    }
+    .prestation:nth-child(even) .prestation__grid > * {
+      direction: ltr;
+    }
+
+    .prestation__img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .prestation__tag {
+      display: inline-block;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      border-radius: 100px;
+      padding: .3rem .9rem;
+      margin-bottom: 1rem;
+    }
+    .prestation__title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .prestation__desc {
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .prestation__list {
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      margin-bottom: 2rem;
+    }
+    .prestation__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      color: var(--color-text);
+      font-size: .95rem;
+    }
+    .prestation__list li::before {
+      content: '→';
+      color: var(--color-accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+
+    @media (max-width: 800px) {
+      .prestation__grid { grid-template-columns: 1fr; gap: 2rem; }
+      .prestation:nth-child(even) .prestation__grid { direction: ltr; }
+      .prestation__img { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo" aria-label="Cazelag - Accueil">
+        <img src="images/icons/logo.jpg" alt="Cazelag" height="44">
+      </a>
+      <ul class="nav__menu" id="nav-menu" role="list">
+        <li><a href="index.html" class="nav__link">Accueil</a></li>
+        <li><a href="prestations.html" class="nav__link active">Prestations</a></li>
+        <li><a href="realisations.html" class="nav__link">Réalisations</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn--primary nav__cta">Devis gratuit</a>
+      <button class="nav__burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="Fil d'Ariane">
+          <ol class="breadcrumb" style="justify-content:center;">
+            <li><a href="index.html">Accueil</a></li>
+            <li aria-hidden="true">/</li>
+            <li><span aria-current="page">Prestations</span></li>
+          </ol>
+        </nav>
+        <p class="page-hero__label">Ce que nous faisons</p>
+        <h1>Nos <span style="color:var(--color-accent)">Prestations</span></h1>
+        <p>Interventions professionnelles à Dax et alentours — Landes (40)</p>
+      </div>
+    </section>
+
+    <!-- ÉLAGAGE -->
+    <section class="prestation section" id="elagage">
+      <div class="container">
+        <div class="prestation__grid">
+          <img
+            src="images/prestations/elagage.jpg"
+            alt="Élagage professionnel en hauteur à Dax"
+            class="prestation__img"
+            width="600" height="420"
+            loading="lazy"
+          >
+          <div>
+            <span class="prestation__tag">Prestation 01</span>
+            <h2 class="prestation__title">Élagage</h2>
+            <p class="prestation__desc">
+              L'élagage est une intervention délicate qui requiert expertise et maîtrise des techniques de grimpe. Pierre-Louis intervient en hauteur avec un équipement professionnel certifié pour garantir la sécurité de chaque chantier.
+            </p>
+            <ul class="prestation__list" role="list">
+              <li>Élagage de formation et de structure</li>
+              <li>Taille d'entretien et nettoyage de couronne</li>
+              <li>Élagage sanitaire (branches mortes, malades)</li>
+              <li>Abattage directionnel et contrôlé</li>
+              <li>Démontage en milieu contraint</li>
+              <li>Broyage et évacuation des déchets verts</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Demander un devis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DÉBARDAGE -->
+    <section class="prestation section" id="debardage">
+      <div class="container">
+        <div class="prestation__grid">
+          <img
+            src="images/prestations/debardage.jpg"
+            alt="Débardage forestier avec HSM 805 dans les Landes"
+            class="prestation__img"
+            width="600" height="420"
+            loading="lazy"
+          >
+          <div>
+            <span class="prestation__tag">Prestation 02</span>
+            <h2 class="prestation__title">Débardage Forestier</h2>
+            <p class="prestation__desc">
+              Le débardage consiste à extraire et transporter les bois coupés hors de la forêt vers une zone de stockage ou de chargement. Cazelag dispose d'un débardeur HSM 805 pour des interventions efficaces et respectueuses des sols forestiers.
+            </p>
+            <ul class="prestation__list" role="list">
+              <li>Débardage avec porteur HSM 805</li>
+              <li>Extraction sur terrains difficiles d'accès</li>
+              <li>Respect des sols et de la régénération forestière</li>
+              <li>Transport jusqu'à la place de dépôt</li>
+              <li>Intervention sur coupes rases ou partielles</li>
+              <li>Chantiers particuliers et professionnels</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Demander un devis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAVAUX FORESTIERS -->
+    <section class="prestation section" id="travaux">
+      <div class="container">
+        <div class="prestation__grid">
+          <img
+            src="images/prestations/travaux-forestiers.jpg"
+            alt="Travaux forestiers dans les Landes"
+            class="prestation__img"
+            width="600" height="420"
+            loading="lazy"
+          >
+          <div>
+            <span class="prestation__tag">Prestation 03</span>
+            <h2 class="prestation__title">Travaux Forestiers</h2>
+            <p class="prestation__desc">
+              Au-delà de l'élagage, Cazelag prend en charge l'ensemble de vos chantiers forestiers : de la préparation du terrain à l'entretien régulier de vos parcelles, en passant par les opérations de débroussaillage et de broyage.
+            </p>
+            <ul class="prestation__list" role="list">
+              <li>Débroussaillage manuel et mécanique</li>
+              <li>Broyage de végétaux et rémanents</li>
+              <li>Coupe rase de parcelles</li>
+              <li>Entretien de pistes et chemins forestiers</li>
+              <li>Nettoyage après tempête ou chablis</li>
+              <li>Travaux en zones humides ou sensibles</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Demander un devis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAVAUX AGRICOLES -->
+    <section class="prestation section" id="agricole">
+      <div class="container">
+        <div class="prestation__grid">
+          <img
+            src="images/prestations/travaux-forestiers.jpg"
+            alt="Travaux agricoles et entretien de haies dans les Landes"
+            class="prestation__img"
+            width="600" height="420"
+            loading="lazy"
+          >
+          <div>
+            <span class="prestation__tag">Prestation 04</span>
+            <h2 class="prestation__title">Travaux Agricoles</h2>
+            <p class="prestation__desc">
+              Partenaire des exploitations agricoles de la région, Cazelag intervient pour l'entretien de vos terres et l'assistance technique en milieu rural. Nous mettons notre savoir-faire au service des espaces agraires.
+            </p>
+            <ul class="prestation__list" role="list">
+              <li>Entretien des haies bocagères et palissages</li>
+              <li>Broyage de refus (prairies, jachères)</li>
+              <li>Abattage de sécurisation aux abords des champs</li>
+              <li>Nettoyage de bordures et fossés</li>
+              <li>Soutien technique et mécanique ponctuel</li>
+              <li>Intervention rapide en cas de dégâts météorologiques</li>
+            </ul>
+            <a href="contact.html" class="btn btn--primary">Demander un devis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta section">
+      <div class="container cta__content">
+        <h2>Un projet en tête ?</h2>
+        <p>Contactez-nous pour un devis gratuit. Réponse rapide garantie.</p>
+        <div class="cta__actions">
+          <a href="tel:+33637767017" class="btn btn--primary btn--lg">06 37 76 70 17</a>
+          <a href="contact.html" class="btn btn--outline btn--lg">Formulaire de contact</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img class="footer__logo-img" src="images/icons/logo.jpg" alt="Cazelag">
+        <p>Élagueur – Grimpeur arboriste<br>Dax et alentours — Landes (40)</p>
+      </div>
+      <nav class="footer__links" aria-label="Navigation secondaire">
+        <h3>Navigation</h3>
+        <ul role="list">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <address class="footer__contact" style="font-style:normal;">
+        <h3>Contact</h3>
+        <a href="tel:+33637767017">06 37 76 70 17</a>
+        <a href="mailto:cazelag40380@gmail.com">cazelag40380@gmail.com</a>
+        <a href="https://www.instagram.com/cazelag/" target="_blank" rel="noopener noreferrer">Instagram @cazelag</a>
+      </address>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year"></span> Cazelag — Pierre-Louis Cazeneuve. Tous droits réservés.</p>
+      <div class="footer__legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie-banner hidden" id="cookie-banner" role="dialog" aria-modal="true" aria-label="Consentement aux cookies">
+    <p>Ce site utilise des cookies. <a href="politique-confidentialite.html">En savoir plus</a></p>
+    <div class="cookie-banner__actions">
+      <button class="btn btn--outline btn--sm" id="cookie-refuse">Refuser</button>
+      <button class="btn btn--primary btn--sm" id="cookie-accept">Accepter</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

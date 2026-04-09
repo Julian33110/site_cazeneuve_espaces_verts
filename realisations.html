@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Réalisations de Cazelag : découvrez nos chantiers d'élagage, débardage forestier et travaux forestiers à Dax et dans les Landes (40).">
+  <meta name="robots" content="index, follow">
+  <title>Réalisations | Cazelag — Élagueur à Dax, Landes (40)</title>
+  <link rel="canonical" href="https://www.cazelag.fr/realisations.html">
+  <link rel="icon" type="image/x-icon" href="/images/icons/favicon.ico">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css?v=3">
+  <style>
+    .page-hero {
+      padding: 10rem 0 4rem;
+      background: linear-gradient(to bottom, rgba(5,12,24,.85), var(--color-bg-alt)),
+                  url('images/realisations/banner.jpg') center/cover no-repeat;
+      text-align: center;
+    }
+    .page-hero__label {
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: .75rem;
+    }
+    .page-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; }
+    .page-hero p { color: var(--color-text-muted); margin-top: .75rem; font-size: 1.1rem; }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .85rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+    }
+    .breadcrumb a { color: var(--color-accent); }
+
+    /* Filters */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: 3rem;
+    }
+    .filter-btn {
+      padding: .5rem 1.25rem;
+      border-radius: 100px;
+      font-size: .875rem;
+      font-weight: 600;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      background: var(--color-bg-card);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: rgba(108,200,50,.08);
+    }
+
+    /* Gallery grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      background: var(--color-bg-card);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,18,10,.9) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+    }
+    .gallery-item:hover .gallery-item__overlay { opacity: 1; }
+    .gallery-item__info h3 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: .25rem;
+    }
+    .gallery-item__info span {
+      font-size: .8rem;
+      color: var(--color-accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.95);
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+    }
+    .lightbox__close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      color: white;
+      font-size: 2rem;
+      line-height: 1;
+      background: rgba(255,255,255,.1);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .lightbox__close:hover { background: rgba(255,255,255,.2); }
+
+    /* Placeholder (avant photos) */
+    .gallery-placeholder {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--color-text-muted);
+    }
+    .gallery-placeholder p { margin-top: .5rem; font-size: .95rem; }
+
+    @media (max-width: 600px) {
+      .gallery { grid-template-columns: 1fr 1fr; gap: .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo" aria-label="Cazelag - Accueil">
+        <img src="images/icons/logo.jpg" alt="Cazelag" height="44">
+      </a>
+      <ul class="nav__menu" id="nav-menu" role="list">
+        <li><a href="index.html" class="nav__link">Accueil</a></li>
+        <li><a href="prestations.html" class="nav__link">Prestations</a></li>
+        <li><a href="realisations.html" class="nav__link active">Réalisations</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn--primary nav__cta">Devis gratuit</a>
+      <button class="nav__burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="Fil d'Ariane">
+          <ol class="breadcrumb" style="justify-content:center;">
+            <li><a href="index.html">Accueil</a></li>
+            <li aria-hidden="true">/</li>
+            <li><span aria-current="page">Réalisations</span></li>
+          </ol>
+        </nav>
+        <p class="page-hero__label">Nos chantiers</p>
+        <h1>Nos <span style="color:var(--color-accent)">Réalisations</span></h1>
+        <p>Quelques exemples de chantiers réalisés à Dax et dans les Landes</p>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--color-bg-alt);">
+      <div class="container">
+
+        <!-- Filters -->
+        <div class="filters" role="group" aria-label="Filtrer par prestation">
+          <button class="filter-btn active" data-filter="all">Tout voir</button>
+          <button class="filter-btn" data-filter="elagage">Élagage</button>
+          <button class="filter-btn" data-filter="debardage">Débardage</button>
+          <button class="filter-btn" data-filter="travaux">Travaux forestiers</button>
+        </div>
+
+        <!-- Gallery -->
+        <div class="gallery" id="gallery" role="list">
+          <!--
+            Pour ajouter des photos :
+            <div class="gallery-item" data-category="elagage" role="listitem">
+              <img src="images/realisations/chantier-01.webp" alt="Description du chantier" loading="lazy" width="400" height="300">
+              <div class="gallery-item__overlay">
+                <div class="gallery-item__info">
+                  <h3>Titre du chantier</h3>
+                  <span>Élagage</span>
+                </div>
+              </div>
+            </div>
+          -->
+          <div class="gallery-item" data-category="elagage" role="listitem">
+            <img
+              src="images/realisations/chantier-01.jpg"
+              alt="Élagage sécurisé d'un arbre à Dax"
+              loading="lazy"
+              width="400" height="300"
+            >
+            <div class="gallery-item__overlay">
+              <div class="gallery-item__info">
+                <h3>Élagage sécurisé</h3>
+                <span>Élagage</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="debardage" role="listitem">
+            <img
+              src="images/realisations/chantier-02.jpg"
+              alt="Débardage forestier avec débardueur HSM 805"
+              loading="lazy"
+              width="400" height="300"
+            >
+            <div class="gallery-item__overlay">
+              <div class="gallery-item__info">
+                <h3>Débardage forestier</h3>
+                <span>Débardage</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="travaux" role="listitem">
+            <img
+              src="images/realisations/chantier-03.jpg"
+              alt="Travaux forestiers et débroussaillage dans les Landes"
+              loading="lazy"
+              width="400" height="300"
+            >
+            <div class="gallery-item__overlay">
+              <div class="gallery-item__info">
+                <h3>Travaux forestiers</h3>
+                <span>Travaux</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="travaux" role="listitem">
+            <img
+              src="images/realisations/chantier-04.jpg"
+              alt="Chantier propre avec bois évacué après intervention"
+              loading="lazy"
+              width="400" height="300"
+            >
+            <div class="gallery-item__overlay">
+              <div class="gallery-item__info">
+                <h3>Chantier propre</h3>
+                <span>Travaux</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta section">
+      <div class="container cta__content">
+        <h2>Votre projet, notre expertise</h2>
+        <p>Un chantier similaire à réaliser ? Contactez-nous pour un devis gratuit.</p>
+        <div class="cta__actions">
+          <a href="tel:+33637767017" class="btn btn--primary btn--lg">06 37 76 70 17</a>
+          <a href="contact.html" class="btn btn--outline btn--lg">Formulaire de contact</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img class="footer__logo-img" src="images/icons/logo.jpg" alt="Cazelag">
+        <p>Élagueur – Grimpeur arboriste<br>Dax et alentours — Landes (40)</p>
+      </div>
+      <nav class="footer__links" aria-label="Navigation secondaire">
+        <h3>Navigation</h3>
+        <ul role="list">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <address class="footer__contact" style="font-style:normal;">
+        <h3>Contact</h3>
+        <a href="tel:+33637767017">06 37 76 70 17</a>
+        <a href="mailto:cazelag40380@gmail.com">cazelag40380@gmail.com</a>
+        <a href="https://www.instagram.com/cazelag/" target="_blank" rel="noopener noreferrer">Instagram @cazelag</a>
+      </address>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year"></span> Cazelag — Pierre-Louis Cazeneuve. Tous droits réservés.</p>
+      <div class="footer__legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Agrandissement photo">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Fermer">×</button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
+  <div class="cookie-banner hidden" id="cookie-banner" role="dialog" aria-modal="true" aria-label="Consentement aux cookies">
+    <p>Ce site utilise des cookies. <a href="politique-confidentialite.html">En savoir plus</a></p>
+    <div class="cookie-banner__actions">
+      <button class="btn btn--outline btn--sm" id="cookie-refuse">Refuser</button>
+      <button class="btn btn--primary btn--sm" id="cookie-accept">Accepter</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

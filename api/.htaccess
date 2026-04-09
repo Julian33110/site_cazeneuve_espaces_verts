@@ -1,0 +1,6 @@
+<Files "*.php">
+    <If "%{REQUEST_METHOD} == 'GET'">
+        Require all denied
+    </If>
+</Files>
+Options -Indexes

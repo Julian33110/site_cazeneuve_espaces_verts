@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>Page introuvable | Cazelag</title>
+  <link rel="icon" type="image/x-icon" href="/images/icons/favicon.ico">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .error-page__code {
+      font-size: clamp(6rem, 20vw, 10rem);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--color-accent);
+      opacity: .15;
+      display: block;
+    }
+    .error-page h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      margin: 1rem 0 .75rem;
+    }
+    .error-page p {
+      color: var(--color-text-muted);
+      margin-bottom: 2rem;
+    }
+    .error-page__actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header scrolled" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo" aria-label="Cazelag - Accueil">
+        <img src="images/icons/logo.jpg" alt="Cazelag" height="44">
+      </a>
+      <ul class="nav__menu" id="nav-menu" role="list">
+        <li><a href="index.html" class="nav__link">Accueil</a></li>
+        <li><a href="prestations.html" class="nav__link">Prestations</a></li>
+        <li><a href="realisations.html" class="nav__link">Réalisations</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <button class="nav__burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="error-page">
+      <div>
+        <span class="error-page__code" aria-hidden="true">404</span>
+        <h1>Page introuvable</h1>
+        <p>La page que vous cherchez n'existe pas ou a été déplacée.</p>
+        <div class="error-page__actions">
+          <a href="index.html" class="btn btn--primary btn--lg">Retour à l'accueil</a>
+          <a href="contact.html" class="btn btn--outline btn--lg">Nous contacter</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

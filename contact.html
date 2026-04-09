@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactez Cazelag pour un devis gratuit d'élagage, débardage ou travaux forestiers à Dax et alentours. Tél : 06 37 76 70 17.">
+  <meta name="robots" content="index, follow">
+  <title>Contact & Devis | Cazelag — Élagueur à Dax, Landes (40)</title>
+  <link rel="canonical" href="https://www.cazelag.fr/contact.html">
+  <link rel="icon" type="image/x-icon" href="/images/icons/favicon.ico">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <style>
+    .page-hero {
+      padding: 10rem 0 4rem;
+      text-align: center;
+      background: linear-gradient(to bottom, rgba(10,18,10,.9), var(--color-bg));
+    }
+    .page-hero__label { font-size:.85rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--color-accent); margin-bottom:.75rem; }
+    .page-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; }
+    .page-hero p { color: var(--color-text-muted); margin-top: .75rem; }
+
+    .breadcrumb { display:flex; align-items:center; gap:.5rem; font-size:.85rem; color:var(--color-text-muted); margin-bottom:1rem; }
+    .breadcrumb a { color: var(--color-accent); }
+
+    /* Contact layout */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* Info cards */
+    .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: border-color var(--transition);
+    }
+    .contact-card:hover { border-color: var(--color-accent); }
+    .contact-card a { color: var(--color-text); transition: color var(--transition); }
+    .contact-card a:hover { color: var(--color-accent); }
+    .contact-card__icon {
+      color: var(--color-accent);
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+    .contact-card__label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: .35rem;
+    }
+    .contact-card__value { font-size: .95rem; font-weight: 500; }
+
+    /* Form */
+    .contact-form {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+    }
+    .contact-form h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .contact-form p {
+      color: var(--color-text-muted);
+      font-size: .9rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; }
+    .form-group--full { grid-column: 1 / -1; }
+
+    label {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      letter-spacing: .03em;
+    }
+    label .required { color: var(--color-accent); margin-left: .2rem; }
+
+    input, select, textarea {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      color: var(--color-text);
+      padding: .75rem 1rem;
+      font-size: .95rem;
+      width: 100%;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(108,200,50,.15);
+    }
+    input::placeholder, textarea::placeholder { color: var(--color-text-muted); }
+    select option { background: var(--color-bg-card); }
+
+    textarea { resize: vertical; min-height: 130px; }
+
+    .form-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      margin-top: .5rem;
+    }
+    .form-consent input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: .15rem;
+      accent-color: var(--color-accent);
+      cursor: pointer;
+    }
+    .form-consent label {
+      font-size: .85rem;
+      color: var(--color-text-muted);
+      font-weight: 400;
+      cursor: pointer;
+    }
+    .form-consent a { color: var(--color-accent); text-decoration: underline; }
+
+    .form-submit { margin-top: 1.5rem; width: 100%; justify-content: center; }
+
+    .form-message {
+      display: none;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-size: .9rem;
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+    .form-message--success {
+      background: rgba(108,200,50,.12);
+      border: 1px solid var(--color-accent);
+      color: var(--color-accent);
+    }
+    .form-message--error {
+      background: rgba(220,50,50,.12);
+      border: 1px solid #dc3232;
+      color: #ff6b6b;
+    }
+
+    /* Horaires */
+    .horaires {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .horaires h3 {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+    }
+    .horaires ul { display: flex; flex-direction: column; gap: .6rem; }
+    .horaires li {
+      display: flex;
+      justify-content: space-between;
+      font-size: .9rem;
+      color: var(--color-text-muted);
+    }
+    .horaires li span:last-child { color: var(--color-text); }
+
+    /* Honeypot anti-spam */
+    .hp-field { display: none !important; }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 500px) {
+      .contact-form { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo" aria-label="Cazelag - Accueil">
+        <img src="images/icons/logo.jpg" alt="Cazelag" height="44">
+      </a>
+      <ul class="nav__menu" id="nav-menu" role="list">
+        <li><a href="index.html" class="nav__link">Accueil</a></li>
+        <li><a href="prestations.html" class="nav__link">Prestations</a></li>
+        <li><a href="realisations.html" class="nav__link">Réalisations</a></li>
+        <li><a href="contact.html" class="nav__link active">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn--primary nav__cta">Devis gratuit</a>
+      <button class="nav__burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="Fil d'Ariane">
+          <ol class="breadcrumb" style="justify-content:center;">
+            <li><a href="index.html">Accueil</a></li>
+            <li aria-hidden="true">/</li>
+            <li><span aria-current="page">Contact</span></li>
+          </ol>
+        </nav>
+        <p class="page-hero__label">Devis gratuit</p>
+        <h1>Nous <span style="color:var(--color-accent)">Contacter</span></h1>
+        <p>Réponse rapide garantie — Intervention sur Dax et alentours</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+
+        <!-- Infos + horaires -->
+        <div>
+          <div class="contact-info">
+            <a href="tel:+33637767017" class="contact-card">
+              <div class="contact-card__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+              </div>
+              <div>
+                <p class="contact-card__label">Téléphone</p>
+                <p class="contact-card__value">06 37 76 70 17</p>
+              </div>
+            </a>
+
+            <a href="mailto:cazelag40380@gmail.com" class="contact-card">
+              <div class="contact-card__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div>
+                <p class="contact-card__label">Email</p>
+                <p class="contact-card__value">cazelag40380@gmail.com</p>
+              </div>
+            </a>
+
+            <a href="https://www.instagram.com/cazelag/" target="_blank" rel="noopener noreferrer" class="contact-card">
+              <div class="contact-card__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+              </div>
+              <div>
+                <p class="contact-card__label">Instagram</p>
+                <p class="contact-card__value">@cazelag</p>
+              </div>
+            </a>
+
+            <div class="contact-card">
+              <div class="contact-card__icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <p class="contact-card__label">Zone d'intervention</p>
+                <p class="contact-card__value">Dax et alentours — Landes (40)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="horaires" style="margin-top:1.25rem;">
+            <h3>Horaires</h3>
+            <ul role="list">
+              <li><span>Lundi — Vendredi</span><span>08h00 – 18h00</span></li>
+              <li><span>Samedi</span><span>Sur rendez-vous</span></li>
+              <li><span>Dimanche</span><span>Fermé</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Formulaire -->
+        <div class="contact-form">
+          <h2>Demander un devis gratuit</h2>
+          <p>Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais.</p>
+
+          <!--
+            Action Formspree : remplacer YOUR_FORM_ID par l'ID obtenu sur formspree.io
+            Alternative : Netlify Forms (ajouter data-netlify="true")
+          -->
+          <form
+            id="contact-form"
+            novalidate
+          >
+            <!-- Honeypot anti-spam -->
+            <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_subject" value="Nouvelle demande de devis — Cazelag">
+            <input type="hidden" name="_language" value="fr">
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nom">Nom <span class="required" aria-label="obligatoire">*</span></label>
+                <input type="text" id="nom" name="nom" autocomplete="family-name" required placeholder="Votre nom">
+              </div>
+              <div class="form-group">
+                <label for="prenom">Prénom <span class="required" aria-label="obligatoire">*</span></label>
+                <input type="text" id="prenom" name="prenom" autocomplete="given-name" required placeholder="Votre prénom">
+              </div>
+              <div class="form-group">
+                <label for="telephone">Téléphone <span class="required" aria-label="obligatoire">*</span></label>
+                <input type="tel" id="telephone" name="telephone" autocomplete="tel" required placeholder="06 XX XX XX XX">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="votre@email.fr">
+              </div>
+              <div class="form-group form-group--full">
+                <label for="prestation">Type de prestation <span class="required" aria-label="obligatoire">*</span></label>
+                <select id="prestation" name="prestation" required>
+                  <option value="" disabled selected>Choisissez une prestation</option>
+                  <option value="elagage">Élagage</option>
+                  <option value="debardage">Débardage forestier</option>
+                  <option value="travaux">Travaux forestiers</option>
+                  <option value="agricole">Travaux agricoles</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+              <div class="form-group form-group--full">
+                <label for="commune">Commune d'intervention</label>
+                <input type="text" id="commune" name="commune" placeholder="Ex : Dax, Saint-Paul-lès-Dax...">
+              </div>
+              <div class="form-group form-group--full">
+                <label for="message">Message <span class="required" aria-label="obligatoire">*</span></label>
+                <textarea id="message" name="message" required placeholder="Décrivez votre projet (type d'arbres, superficie, accès, délais...)"></textarea>
+              </div>
+              <div class="form-group form-group--full">
+                <div class="form-consent">
+                  <input type="checkbox" id="consent" name="consent" required>
+                  <label for="consent">
+                    J'accepte que mes données soient utilisées pour traiter ma demande de devis,
+                    conformément à la <a href="politique-confidentialite.html">politique de confidentialité</a>. <span class="required" aria-label="obligatoire">*</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--lg form-submit">
+              Envoyer ma demande
+            </button>
+
+            <div class="form-message form-message--success" id="form-success" role="alert">
+              ✓ Votre message a bien été envoyé ! Nous vous recontacterons rapidement.
+            </div>
+            <div class="form-message form-message--error" id="form-error" role="alert">
+              Une erreur est survenue. Veuillez réessayer ou nous appeler directement.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img class="footer__logo-img" src="images/icons/logo.jpg" alt="Cazelag">
+        <p>Élagueur – Grimpeur arboriste<br>Dax et alentours — Landes (40)</p>
+      </div>
+      <nav class="footer__links" aria-label="Navigation secondaire">
+        <h3>Navigation</h3>
+        <ul role="list">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="prestations.html">Prestations</a></li>
+          <li><a href="realisations.html">Réalisations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <address class="footer__contact" style="font-style:normal;">
+        <h3>Contact</h3>
+        <a href="tel:+33637767017">06 37 76 70 17</a>
+        <a href="mailto:cazelag40380@gmail.com">cazelag40380@gmail.com</a>
+        <a href="https://www.instagram.com/cazelag/" target="_blank" rel="noopener noreferrer">Instagram @cazelag</a>
+      </address>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year"></span> Cazelag — Pierre-Louis Cazeneuve. Tous droits réservés.</p>
+      <div class="footer__legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie-banner hidden" id="cookie-banner" role="dialog" aria-modal="true" aria-label="Consentement aux cookies">
+    <p>Ce site utilise des cookies. <a href="politique-confidentialite.html">En savoir plus</a></p>
+    <div class="cookie-banner__actions">
+      <button class="btn btn--outline btn--sm" id="cookie-refuse">Refuser</button>
+      <button class="btn btn--primary btn--sm" id="cookie-accept">Accepter</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/brevo-contact.js"></script>
+</body>
+</html>
