@@ -1,7 +1,7 @@
 /**
- * Formulaire de contact — Envoi sécurisé via proxy PHP
+ * Formulaire de contact — Envoi via fonction serverless Vercel (Node.js)
  */
-const PROXY_URL = '/api/brevo-proxy.php';
+const PROXY_URL = '/api/contact';
 
 function validateForm(formData) {
   const errors = [];
